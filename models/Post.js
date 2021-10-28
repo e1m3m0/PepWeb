@@ -25,10 +25,7 @@ Post.init(
     },
     post_photo: {
       type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        isUrl: true
-      }
+      allowNull: true
     },
     user_id: {
       type: DataTypes.INTEGER,
