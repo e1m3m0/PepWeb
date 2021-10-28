@@ -1,0 +1,23 @@
+{
+  "name": "pepweb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "s3.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JessicaLDaley/PepWeb.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JessicaLDaley/PepWeb/issues"
+  },
+  "homepage": "https://github.com/JessicaLDaley/PepWeb#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "multer-s3-v3": "^3.10.0"
+  }
+}
