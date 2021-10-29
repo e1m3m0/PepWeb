@@ -16,7 +16,7 @@ Post.hasMany(Comment, {
   foreignKey: 'post_id'
 });
 
-Comment.hasOne(Post, {
+Comment.belongsTo(Post, {
   foreignKey: 'post_id'
 });
 
@@ -24,28 +24,16 @@ User.hasMany(Comment, {
   foreignKey: 'user_id'
 });
 
-Comment.hasOne(User, {
+Comment.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
-User.hasMany(Reaction, {
+Reaction.belongsTo(User, {
   foreignKey: 'user_id'
-});
-
-Reaction.hasMany(User, {
-  foreignKey: 'user_id'
-});
-
-Tag.hasMany(Post, {
-  foreignKey: 'tag_id'
 });
 
 Post.belongsTo(Tag, {
   foreignKey: 'tag_id'
-});
-
-Reaction.hasMany(Post, {
-  foreignKey: 'post_id'
 });
 
 Post.hasMany(Reaction, {
