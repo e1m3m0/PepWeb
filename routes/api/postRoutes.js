@@ -1,12 +1,34 @@
 const router = require("express").Router();
-const { Post, User } = require("../../models");
+const { Post, User, Comment, Tag, Reaction } = require("../../models");
 
-// get all users
 router.get("/", (req, res) => {
   Post.findAll({
-    attributes: ["id", "post_text", "title", "created_at", "tag_id"],
-    order: [["created-at", "DESC"]],
+    order: [["created_at", "DESC"]],
+    attributes: [
+      "id",
+      "title",
+      "post_text",
+      "created_at",
+      [
+        sequelize.literal(
+          "(SELECT COUNT(*) FROM reaction WHERE post.id = reaction.post_id)"
+        ),
+        "reaction_count",
+      ],
+    ],
     include: [
+      {
+        model: Tag,
+        attributes: ["tagged"],
+      },
+      {
+        model: Comment,
+        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
       {
         model: User,
         attributes: ["username"],
@@ -25,8 +47,31 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: ["id", "post_url", "title", "created_at"],
+    attributes: [
+      "id",
+      "post_text",
+      "title",
+      "created_at",
+      [
+        sequelize.literal(
+          "(SELECT COUNT(*) FROM reaction WHERE post.id = reaction.post_id)"
+        ),
+        "reaction_count",
+      ],
+    ],
     include: [
+      {
+        model: Tag,
+        attributes: ["tagged"],
+      },
+      {
+        model: Comment,
+        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
       {
         model: User,
         attributes: ["username"],
@@ -62,7 +107,7 @@ router.post("/", (req, res) => {
 });
 
 router.put("/:id", (req, res) => {
-  Post.update(req.body,{
+  Post.update(req.body, {
     individualHooks: true,
     where: {
       id: req.params.id,
@@ -76,6 +121,16 @@ router.put("/:id", (req, res) => {
       res.json(dbPostData);
     })
     .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.put('/react', (req, res) => {
+  // custom static method created in models/Post.js
+  Post.react(req.body, { Reaction, Comment, User })
+    .then(dbReactionData => res.json(dbReactionData))
+    .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });

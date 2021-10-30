@@ -1,15 +1,9 @@
 const router = require("express").Router();
-const { Post, User, Comment } = require("../../models");
+const { Comment } = require("../../models");
 
 // get all comments
-router.get("/:post_id", (req, res) => {
-  Comment.findAll({
-    where: {
-      post_id: req.params.post_id,
-    },
-    attributes: ["user_id", "comment_text", "post_id", "create-at"],
-    order: [["created-at", "DESC"]],
-  })
+router.get("/", (req, res) => {
+  Comment.findAll()
     .then((dbCommentData) => res.json(dbCommentData))
     .catch((err) => {
       console.log(err);
@@ -26,7 +20,7 @@ router.post("/", (req, res) => {
     .then((dbCommentData) => res.json(dbCommentData))
     .catch((err) => {
       console.log(err);
-      res.status(500).json(err);
+      res.status(400).json(err);
     });
 });
 // delete a comment
