@@ -26,6 +26,7 @@ function uploadFile(file) {
   return s3.upload(uploadParams).promise()
 }
 exports.uploadFile = uploadFile
+console.log("We're next to upload file")
 
 
 // downloads a file from s3
@@ -38,3 +39,4 @@ function getFileStream(fileKey) {
   return s3.getObject(downloadParams).createReadStream()
 }
 exports.getFileStream = getFileStream
+console.log("We are near get file stream")

@@ -7,13 +7,14 @@
     <title>PepWeb</title>
 </head>
 <body>
-    <form action="/action_page.php">
+    <form  onsubmit="return false" method="POST" enctype="multipart/form-data">
         <input type="file" id="myFile" name="filename">
-        <input type="submit">
+        <button type="button" onClick="window.location.reload();">Post</button>
+        <input type="button" >
       </form>
       
-   <script src="server.js"></script> 
-   <script src="s3.js"></script>
+   <script src="./server.js"></script> 
+   <script src="./s3.js"></script>
 </body>
 
 </html>

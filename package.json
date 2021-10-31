@@ -2,15 +2,14 @@
   "name": "pepweb",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JessicaLDaley/PepWeb.git"
-   
   },
   "author": "",
   "license": "ISC",
@@ -20,8 +19,11 @@
   "homepage": "https://github.com/JessicaLDaley/PepWeb#readme",
   "dependencies": {
     "aws-sdk": "^2.1018.0",
+    "body-parser": "^1.19.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "multer": "^1.4.3",
+    "multer-s3": "^2.10.0",
     "multer-s3-v3": "^3.10.0",
     "sequelize": "^6.8.0"
   }
