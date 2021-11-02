@@ -1,3 +1,15 @@
+main {
+  min-height: 65vh;
+}
+
 .emoji {
   text-decoration: none!important;
+}
+
+.title-input {
+  width: 50%;
+}
+
+.footer {
+  margin-top: 50px;
 }

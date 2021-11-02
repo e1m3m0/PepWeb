@@ -28,27 +28,52 @@
 
   <main class="container is-max-desktop">
     <!-- template area start -->
-    <article class="message mx-5">
-      <div class="message-header py-2">
-        <div class="level">
-          <div class="level-item">
-            <div>
-              <p>Homemade Supreme!!!</p>
-              <div class="has-text-weight-normal level-left">
-                <a class="mr-2">34 Comments</a>
-                <p class="mr-2">Homemade</p>
-                <a class="mr-2 emoji">🤤32</a>
-                <a class="mr-2 emoji">😒12</a>
-                <a class="mr-2 emoji">🤢2</a>
-              </div>
-            </div>
-          </div>
+    <div class="field title-input">
+      <label class="label">Title</label>
+      <div class="control">
+        <input class="input" type="text" placeholder="Post Title">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Pizza Type</label>
+      <div class="control">
+        <div class="select">
+          <select>
+            <option selected="true" disabled>Select type</option>
+            <option>Restaurant</option>
+            <option>Homemade</option>
+            <option>Grocery Store</option>
+          </select>
         </div>
       </div>
-      <div class="message-body">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+    </div>
+
+    <div class="field">
+      <label class="label">Post</label>
+      <div class="control">
+        <textarea class="textarea" placeholder="Post text"></textarea>
       </div>
-    </article>
+    </div>
+
+    <div class="field is-grouped">
+      <div class="file control">
+        <label class="file-label">
+          <input class="file-input" type="file" name="resume">
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fas fa-upload"></i>
+            </span>
+            <span class="file-label">
+              Upload a photo (optional)
+            </span>
+          </span>
+        </label>
+      </div>
+      <div class="control">
+        <button class="button file-cta">Submit</button>
+      </div>
+    </div>
     <!-- template area end -->
   </main>
 
