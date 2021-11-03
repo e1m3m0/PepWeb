@@ -18,7 +18,14 @@ const postdata = [
     post_text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
     user_id: 2,
     tag_id: 3
+  },
+  {
+    title: 'PewDew is the Best',
+    post_text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+    user_id: 3,
+    tag_id: 3
   }
+
 ];
 
 const seedPosts = () => Post.bulkCreate(postdata);

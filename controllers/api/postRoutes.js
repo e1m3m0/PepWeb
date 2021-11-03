@@ -1,4 +1,4 @@
-const sequelize = require('../../config/connection');
+const sequelize = require("../../config/connection");
 const router = require("express").Router();
 const { Post, User, Comment, Tag, Reaction } = require("../../models");
 
@@ -14,20 +14,30 @@ router.get("/", (req, res) => {
         sequelize.literal(
           "(SELECT COUNT(*) FROM reaction WHERE post.id = reaction.post_id)"
         ),
-        "reaction_count",
+         "reaction_count",
+      ],
+      [
+        sequelize.literal(
+          "(SELECT COUNT(*) FROM comment WHERE post.id = comment.post_id)"
+        ),
+        "comment_count",
       ],
     ],
     include: [
       {
+        model: Reaction,
+        attributes: ["reaction_id", "user_id"],
+      },
+      {
         model: Tag,
-        attributes: ["name"],
+        attributes: ["id", "name"],
       },
       {
         model: Comment,
         attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
         include: {
           model: User,
-          attributes: ["username"],
+          attributes: ["username", "id"],
         },
       },
       {
@@ -44,38 +54,49 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
+  const post = req.params.id;
   Post.findOne({
     where: {
       id: req.params.id,
     },
     attributes: [
       "id",
-      "post_text",
       "title",
+      "post_text",
       "created_at",
       [
         sequelize.literal(
           "(SELECT COUNT(*) FROM reaction WHERE post.id = reaction.post_id)"
         ),
-        "reaction_count",
+         "reaction_count",
+      ],
+      [
+        sequelize.literal(
+          "(SELECT COUNT(*) FROM comment WHERE post.id = comment.post_id)"
+        ),
+        "comment_count",
       ],
     ],
     include: [
       {
+        model: Reaction,
+        attributes: ["reaction_id", "user_id"],
+      },
+      {
         model: Tag,
-        attributes: ["tagged"],
+        attributes: ["id", "name"],
       },
       {
         model: Comment,
         attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
         include: {
           model: User,
-          attributes: ["username"],
+          attributes: ["username", "id"],
         },
       },
       {
         model: User,
-        attributes: ["username"],
+        attributes: ["username", "id"],
       },
     ],
   })
@@ -127,11 +148,11 @@ router.put("/:id", (req, res) => {
     });
 });
 
-router.put('/react', (req, res) => {
+router.put("/react", (req, res) => {
   // custom static method created in models/Post.js
   Post.react(req.body, { Reaction, Comment, User })
-    .then(dbReactionData => res.json(dbReactionData))
-    .catch(err => {
+    .then((dbReactionData) => res.json(dbReactionData))
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });

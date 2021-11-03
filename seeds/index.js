@@ -1,6 +1,8 @@
 const seedTags = require('./tags');
 const seedUsers = require('./users');
 const seedPosts = require('./posts');
+const seedReactions = require('./reactions');
+const seedComments = require('./comments');
 
 const sequelize = require('../config/connection');
 
@@ -16,6 +18,11 @@ const seedAll = async () => {
   await seedPosts();
   console.log('--------------');
 
+  await seedReactions();
+  console.log('--------------');
+
+  await seedComments();
+  console.log('--------------');
 
   process.exit(0);
 };
