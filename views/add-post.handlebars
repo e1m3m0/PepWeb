@@ -1,0 +1,49 @@
+<form class="post-submit">
+      <div class="field title-input">
+        <label class="label">Title</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Post Title" id="title">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Pizza Type</label>
+        <div class="control">
+          <div class="select">
+            <select id="type">
+              <option selected="true" disabled value="">Select post type</option>
+              <option value="1">Made from scratch</option>
+              <option value="2">Must visit Pizza place</option>
+              <option value="3">For the love of Pizza</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Post</label>
+        <div class="control">
+          <textarea class="textarea" placeholder="Post text" id="text"></textarea>
+        </div>
+      </div>
+      <div class="field is-grouped">
+        {{!-- file upload section starts --}}
+        <div class="file control">
+          <label class="file-label">
+            <input class="file-input" type="file" name="resume">
+            <span class="file-cta">
+              <span class="file-icon">
+                <i class="fas fa-upload"></i>
+              </span>
+              <span class="file-label">
+                Upload a photo (optional)
+              </span>
+            </span>
+          </label>
+        </div>
+        {{!-- file upload section ends --}}
+        <div class="control">
+          <button class="button file-cta">Submit</button>
+        </div>
+      </div>
+    </form>
+
+    <script src="/javascript/addPost.js"></script>
