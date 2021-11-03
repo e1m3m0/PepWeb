@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS pewdew_db;
+
+CREATE DATABASE pewdew_db;

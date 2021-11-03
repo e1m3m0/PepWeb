@@ -5,6 +5,7 @@ const sequelize = require('../config/connection');
 class Post extends Model {
   static react(body, models) {
     return models.Reaction.create({
+      reaction_id: body.reaction_id,
       user_id: body.user_id,
       post_id: body.post_id
     }).then(() => {
@@ -14,7 +15,7 @@ class Post extends Model {
         },
         attributes: [
           'id',
-          'post_url',
+          'post_text',
           'title',
           'created_at',
           [

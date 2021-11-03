@@ -12,8 +12,8 @@ Reaction.init(
       primaryKey: true,
       autoIncrement: true
     },
-    react: {
-      type: DataTypes.STRING,
+    reaction_id: {
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     post_id: {
@@ -30,6 +30,13 @@ Reaction.init(
         key: 'id'
       }
     }
+  },
+  {
+  sequelize,
+  timestamps: false,
+  freezeTableName: true,
+  underscored: true,
+  modelName: 'reaction'
   }
 )
 
