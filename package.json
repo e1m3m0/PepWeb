@@ -19,6 +19,7 @@
   "homepage": "https://github.com/JessicaLDaley/PepWeb#readme",
   "dependencies": {
     "aws-sdk": "^2.1018.0",
+    "axios": "^0.24.0",
     "body-parser": "^1.19.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
@@ -27,6 +28,7 @@
     "multer-s3": "^2.10.0",
     "multer-s3-v3": "^3.10.0",
     "mysql2": "^2.3.2",
-    "sequelize": "^6.9.0"
+    "sequelize": "^6.9.0",
+    "uuid": "^8.3.2"
   }
 }
