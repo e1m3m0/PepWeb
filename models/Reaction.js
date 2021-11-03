@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
 // create User model
 class Reaction extends Model {}
@@ -10,43 +10,34 @@ Reaction.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
     },
     reaction_id: {
       type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    post_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'post',
-        key: 'id'
-      }
+      allowNull: false,
     },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'user',
-        key: 'id'
-      }
-    }
+        model: "user",
+        key: "id",
+      },
+    },
+    post_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "post",
+        key: "id",
+      },
+    },
   },
   {
-<<<<<<< HEAD
-  sequelize,
-  timestamps: false,
-  freezeTableName: true,
-  underscored: true,
-  modelName: 'reaction'
-  }
-=======
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'reaction'
-    }
->>>>>>> 5236ee22c986523b645e094e1b0da407e681bb12
-)
+    modelName: "reaction",
+  }
+);
 
 module.exports = Reaction;
