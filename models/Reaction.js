@@ -32,12 +32,21 @@ Reaction.init(
     }
   },
   {
+<<<<<<< HEAD
   sequelize,
   timestamps: false,
   freezeTableName: true,
   underscored: true,
   modelName: 'reaction'
   }
+=======
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'reaction'
+    }
+>>>>>>> 5236ee22c986523b645e094e1b0da407e681bb12
 )
 
 module.exports = Reaction;
