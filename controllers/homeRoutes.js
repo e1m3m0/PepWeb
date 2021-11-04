@@ -139,5 +139,9 @@ router.get('/post/:id', (req, res) => {
 router.get('/add-post/', (req, res) => {
   res.render('add-post');
 });
+
+router.get('/login', (req, res) => {
+  res.render('login-signup');
+});
       
 module.exports = router;
