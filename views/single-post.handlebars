@@ -1,0 +1,25 @@
+<article class="message mx-5">
+  <div class="message-header py-2">
+    <div class="level">
+      <div class="level-item">
+        <div>
+          <div class="level-left mb-1">
+            <p>{{post.title}}</p>
+            <p class="ml-2 has-text-weight-normal"> - {{post.tag.name}}</p>
+          </div>
+          <div class="has-text-weight-normal level-left">
+            {{!-- change span to <a></a> with href if user-profile route is made and set up --}}
+            <p class="mr-2">By: <span class="username">{{post.user.username}}</span></p>
+            <a href="/post/{{id}}" class="mr-2">{{post.comment_count}} Comments</a>
+            <a class="mr-2 emoji">🤤{{#if reactions.[0]}}{{reactions.[0].reactionCount}}{{else}}0{{/if}}</a>
+            <a class="mr-2 emoji">😒{{#if reactions.[1]}}{{reactions.[1].reactionCount}}{{else}}0{{/if}}</a>
+            <a class="mr-2 emoji">🤢{{#if reactions.[2]}}{{reactions.[2].reactionCount}}{{else}}0{{/if}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="message-body">
+    {{post.post_text}}
+  </div>
+</article>

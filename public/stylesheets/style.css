@@ -7,6 +7,10 @@ main {
 }
 
 .message-header {
+  background-color: #2274A5!important;
+}
+
+.home-post {
   border-radius: 4px!important;
 }
 
