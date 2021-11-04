@@ -2,6 +2,10 @@ main {
   min-height: 65vh;
 }
 
+.nav-section {
+  width: 25%;
+}
+
 .username {
   text-decoration: none!important;
 }
