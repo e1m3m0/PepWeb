@@ -19,9 +19,18 @@
       </div>
     </div>
   </div>
-  
+
   <div class="message-body">
-    {{post.post_text}}
+    <div class="columns">
+      {{!-- {{#if post.photo_photo}} --}}
+      {{!-- <figure class="image image-center">
+        <img src="https://www.budgetbytes.com/wp-content/uploads/2010/07/Classic-Homemade-Pizza-Dough-close.jpg">
+      </figure> --}}
+       {{!-- {{/if}} --}}
+      <p class="column">{{post.post_text}}</p>
+    </div>
+  </div>
+    
   </div>
 </article>
 

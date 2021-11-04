@@ -14,6 +14,13 @@ main {
   text-decoration: none!important;
 }
 
+.image-center {
+  display: flex!important;
+  align-items: center!important;
+  height: 156px;
+  width: 156px;
+}
+
 .home-post {
   border-radius: 4px!important;
 }
