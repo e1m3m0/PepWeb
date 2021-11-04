@@ -2,10 +2,6 @@ main {
   min-height: 65vh;
 }
 
-.nav-section {
-  width: 25%;
-}
-
 .username {
   text-decoration: none!important;
 }
@@ -14,8 +10,15 @@ main {
   background-color: #2274A5!important;
 }
 
-.single-post {
-  border-radius: 4px!important;
+.home-title {
+  text-decoration: none!important;
+}
+
+.image-center {
+  display: flex!important;
+  align-items: center!important;
+  height: 156px;
+  width: 156px;
 }
 
 .emoji {
