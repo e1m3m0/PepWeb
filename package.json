@@ -2,15 +2,15 @@
   "name": "pepweb",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "devStart": "nodemon server.js "
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JessicaLDaley/PepWeb.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -18,18 +18,19 @@
   },
   "homepage": "https://github.com/JessicaLDaley/PepWeb#readme",
   "dependencies": {
-    "connect-session-sequelize": "^7.1.2",
-    "dotenv": "^10.0.0",
+    "bcrypt": "^5.0.1",
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "express-flash": "0.0.2",
     "express-handlebars": "^5.3.4",
     "express-session": "^1.17.2",
-    "multer-s3-v3": "^3.10.0",
-    "mysql2": "^2.3.2",
+    "method-override": "^3.0.0",
     "passport": "^0.5.0",
-    "passport-custom": "^1.1.1",
-    "sequelize": "^6.8.0"
+    "passport-local": "^1.0.0",
+    "sequelize": "^6.9.0"
   },
   "devDependencies": {
+    "dotenv": "^10.0.0",
     "nodemon": "^2.0.14"
   }
 }
