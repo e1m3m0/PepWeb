@@ -1,17 +1,17 @@
-if (process.env.NODE_ENV !== "production" ) {
-    require("dotenv").config()
-}
+// if (process.env.NODE_ENV !== "production" ) {
+//     require("dotenv").config()
+// }
 
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 
-const bcrypt = require("bcrypt")
-const passport = require("passport")
-const flash = require("express-flash")
-const methodOverride = require("method-override")
-const initializePassport = require("./passport-config")
+// const bcrypt = require("bcrypt")
+// const passport = require("passport")
+// const flash = require("express-flash")
+// const methodOverride = require("method-override")
+// const initializePassport = require("./passport-config")
 
 const app = express();
 const PORT = process.env.PORT || 3001;
