@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
         sequelize.literal(
           "(SELECT COUNT(*) FROM reaction WHERE post.id = reaction.post_id)"
         ),
-         "reaction_count",
+        "reaction_count",
       ],
       [
         sequelize.literal(
@@ -68,7 +68,7 @@ router.get("/:id", (req, res) => {
         sequelize.literal(
           "(SELECT COUNT(*) FROM reaction WHERE post.id = reaction.post_id)"
         ),
-         "reaction_count",
+        "reaction_count",
       ],
       [
         sequelize.literal(
@@ -114,18 +114,20 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  Post.create({
-    title: req.body.title,
-    post_text: req.body.post_text,
-    post_photo: req.body.post_photo,
-    tag_id: req.body.tag_id,
-    user_id: req.body.user_id,
-  })
-    .then((dbPostData) => res.json(dbPostData))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+  if (req.session) {
+    Post.create({
+      title: req.body.title,
+      post_text: req.body.post_text,
+      post_photo: req.body.post_photo,
+      tag_id: req.body.tag_id,
+      user_id: req.session.user_id,
+    })
+      .then((dbPostData) => res.json(dbPostData))
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  }
 });
 
 router.put("/:id", (req, res) => {
@@ -148,15 +150,15 @@ router.put("/:id", (req, res) => {
     });
 });
 
-router.put("/react", (req, res) => {
-  // custom static method created in models/Post.js
-  Post.react(req.body, { Reaction, Comment, User })
-    .then((dbReactionData) => res.json(dbReactionData))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+// router.put("/react", (req, res) => {
+//   // custom static method created in models/Post.js
+//   Post.react(req.body, { Reaction, Comment, User })
+//     .then((dbReactionData) => res.json(dbReactionData))
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
 
 router.delete("/:id", (req, res) => {
   Post.destroy({

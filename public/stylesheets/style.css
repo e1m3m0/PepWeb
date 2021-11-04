@@ -40,3 +40,8 @@ main {
 .footer {
   margin-top: 50px;
 }
+
+.reaction {
+  border: none;
+  background-color: #2274A5!important;
+}

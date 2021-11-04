@@ -49,7 +49,10 @@ router.get("/", (req, res) => {
   .then(dbPOstData => {
     const posts = dbPOstData.map(post => post.get({ plain: true }));
 
-    res.render('homepage', {posts});
+    res.render('homepage', {
+      posts, 
+      loggedIn: req.session.loggedIn
+    });
   })
   .catch(err => {
     console.log(err);
@@ -127,7 +130,11 @@ router.get('/post/:id', (req, res) => {
 
       console.log(reactions);
 
-      res.render('single-post', {post: post, reactions: reactions});
+      res.render('single-post', {
+        post: post,
+        reactions: reactions,
+        loggedIn: req.session.loggedIn
+      });
     })
     .catch(err => {
       console.log(err);
@@ -137,10 +144,20 @@ router.get('/post/:id', (req, res) => {
 });
 
 router.get('/add-post/', (req, res) => {
+  if (req.session.loggedIn) {
   res.render('add-post');
+  return;
+  }
+
+  res.render('login-signup');
 });
 
 router.get('/login', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+  
   res.render('login-signup');
 });
       
