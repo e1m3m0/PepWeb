@@ -6,6 +6,8 @@ const flash = require("express-flash")
 const methodOverride = require("method-override")
 
 const initializePassport = require("./passport-config")
+
+
 initializePassport (passport, email => {
     users.find(user => user.email === email),
     id => users.find(user => user.id === id)
@@ -17,7 +19,6 @@ app.set("view-engine", "ejs" )
 app.use(express.urlencoded({ extended: false }))
 app.use(flash())
 app.use(methodOverride ("_method"))
-
 //app.use(passport.initialize())
 
 app.get("/", checkNotAuthenticated, (req, res) => {
@@ -28,7 +29,7 @@ app.get("/login", checkNotAuthenticated, (req,res) => {
     res.render("login.ejs")
 })
 
-app.post("/login", checkNotAuthenticated , passport.authenticate("local", {
+app.post("/login", checkNotAuthenticated , passport.use (" new CustomStartegy", {
     successRedirect: "/",
     failureRedirect: "/login",
     failureFlash: true

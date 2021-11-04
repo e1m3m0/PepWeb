@@ -9,24 +9,20 @@ function initialize(passport, getUserEmail, getUserById) {
         }
         try {
             if (await bcrypt.compare(password, user.password)) {
-                return document(null, user);
+                return done(null, user);
             } else {
                 return done(null, false, { message: "Incorrect Password try again" });
             }
         } catch (err) {
             return done(err);
         }
-        passport.use("custome-strategy", new CustomStrategy({ usernameField: "email" }, authenticateUser));
-        passport.serializeUser((user, done) => done(null, user.id));
-        passport.deserializeUser((id, done) => {
-            return done(null, getUserById(id));
-        });
+    
     }
-    //passport.use( "custome-strategy", new CustomStrategy ({ usernameField: "email" }, authenticateUser))
-    // passport.serializeUser((user, done) => done(null, user.id))
-    // passport.deserializeUser((id, done) => {
-    //      return done(null, getUserById(id))
-    // })
+    passport.use( "custome-strategy", new CustomStrategy ({ usernameField: "email" }, authenticateUser))
+    passport.serializeUser((user, done) => done(null, user.id))
+    passport.deserializeUser((id, done) => {
+         return done(null, getUserById(id))
+    })
 
 }
 
