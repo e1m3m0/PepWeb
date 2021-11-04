@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PepWeb - Pizza at it's best</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <nav class="navbar has-background-black block">
+    <div class="container is-fluid is-justify-content-space-evenly has-text-centered">
+      <div class="navbar-item is-size-5">
+        <a class="has-text-grey-light">Home</a>
+      </div>
+      <div class="navbar-item is-size-3">
+        <a class="has-text-grey-light">Pep<span class="has-text-danger-dark"><i class="fas fa-pizza-slice"></i></span>Web</a>
+      </div>
+      <div class="navbar-item is-size-5">
+        <a class="has-text-grey-light">Login / Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container is-max-desktop">
+    <!-- template area start -->
+    <form class="post-submit">
+      <div class="field title-input">
+        <label class="label">Title</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Post Title" id="title">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Pizza Type</label>
+        <div class="control">
+          <div class="select">
+            <select id="type">
+              <option selected="true" disabled value="">Select post type</option>
+              <option value="1">Made from scratch</option>
+              <option value="2">Must visit Pizza place</option>
+              <option value="3">For the love of Pizza</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Post</label>
+        <div class="control">
+          <textarea class="textarea" placeholder="Post text" id="text"></textarea>
+        </div>
+      </div>
+      <div class="field is-grouped">
+        <!-- this is the upload button -->
+        <div class="file control">
+          <label class="file-label">
+            <input class="file-input" type="file" name="resume">
+            <span class="file-cta">
+              <span class="file-icon">
+                <i class="fas fa-upload"></i>
+              </span>
+              <span class="file-label">
+                Upload a photo (optional)
+              </span>
+            </span>
+          </label>
+        </div>
+        <!-- end upload button -->
+        <div class="control">
+          <button class="button file-cta">Submit</button>
+        </div>
+      </div>
+
+    </form>
+    <!-- template area end -->
+  </main>
+
+  <footer class="footer has-background-grey-light">
+    <div class="level">
+      <div class="level-item has-text-centered">
+        <div>
+          <span class="title is-4">
+            Site Prepared By
+          </span>
+          <p class="title is-6">Guillermo Mateo</p>
+          <p class="title is-6">Jessica Daley</p>
+          <p class="title is-6">Antonio Madureira</p>
+          <p class="title is-6">Steve Bendrick</p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="title is-5">Questions or Comments?</p>
+          <a href="https://github.com/JessicaLDaley/PepWeb" class="has-text-grey-darker" target="_blank">View our github repository<br/>and leave us a message!</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./index.js"></script>
+
+</body>
+</html>

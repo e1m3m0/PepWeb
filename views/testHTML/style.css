@@ -1,0 +1,23 @@
+main {
+  min-height: 65vh;
+}
+
+.username {
+  text-decoration: none!important;
+}
+
+.message-header {
+  border-radius: 4px!important;
+}
+
+.emoji {
+  text-decoration: none!important;
+}
+
+.title-input {
+  width: 50%;
+}
+
+.footer {
+  margin-top: 50px;
+}

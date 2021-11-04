@@ -1,0 +1,23 @@
+{{#each posts}}
+<article class="message mx-5">
+  <div class="message-header py-2">
+    <div class="level">
+      <div class="level-item">
+        <div>
+          <div class="level-left mb-1">
+            <p>{{title}}</p>
+            <p class="ml-2 has-text-weight-normal"> - {{tag.name}}</p>
+          </div>
+          <div class="has-text-weight-normal level-left">
+            <p class="mr-2">By: <a class="username">{{user.username}}</a></p>
+            <a class="mr-2">{{reaction_count}} Comments</a>
+            <a class="mr-2 emoji">🤤25</a>
+            <a class="mr-2 emoji">😒12</a>
+            <a class="mr-2 emoji">🤢2</a> --}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+{{/each}}
