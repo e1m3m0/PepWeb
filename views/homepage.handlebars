@@ -5,16 +5,14 @@
       <div class="level-item">
         <div>
           <div class="level-left mb-1">
-            <p>{{title}}</p>
+            <a href="/post/{{id}}" class="home-title">{{title}}</a>
             <p class="ml-2 has-text-weight-normal"> - {{tag.name}}</p>
           </div>
           <div class="has-text-weight-normal level-left">
             {{!-- change span to <a></a> with href if user-profile route is made and set up --}}
             <p class="mr-2">By: <span class="username">{{user.username}}</span></p>
             <a href="/post/{{id}}" class="mr-2">{{comment_count}} Comments</a>
-            <a class="mr-2 emoji">🤤25</a>
-            <a class="mr-2 emoji">😒12</a>
-            <a class="mr-2 emoji">🤢2</a>
+            <p>Posted on {{format_date created_at}}</p>
           </div>
         </div>
       </div>

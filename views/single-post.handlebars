@@ -10,7 +10,7 @@
           <div class="has-text-weight-normal level-left">
             {{!-- change span to <a></a> with href if user-profile route is made and set up --}}
             <p class="mr-2">By: <span class="username">{{post.user.username}}</span></p>
-            <a href="/post/{{id}}" class="mr-2">{{post.comment_count}} Comments</a>
+            <a class="mr-2">{{post.comment_count}} Comments</a>
             <a class="mr-2 emoji">🤤{{#if reactions.[0]}}{{reactions.[0].reactionCount}}{{else}}0{{/if}}</a>
             <a class="mr-2 emoji">😒{{#if reactions.[1]}}{{reactions.[1].reactionCount}}{{else}}0{{/if}}</a>
             <a class="mr-2 emoji">🤢{{#if reactions.[2]}}{{reactions.[2].reactionCount}}{{else}}0{{/if}}</a>
@@ -19,7 +19,15 @@
       </div>
     </div>
   </div>
+  
   <div class="message-body">
     {{post.post_text}}
   </div>
 </article>
+
+{{#each post.comments}}
+<div class="box mx-5 comment_box">
+  <p>{{user.username}} on {{format_date created_at}}: </p>
+  <p>{{comment_text}}</p>
+</div>
+{{/each}}
