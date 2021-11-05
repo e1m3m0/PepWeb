@@ -39,7 +39,7 @@ Who doesn't love fun? Who doesn't love pizza? Here at PepWeb, we believe in the 
   ## Contribution 
   
   
-Anyone can contribute. Just clone the repository, create a feature branch, and submit a pull request. Upon review, your submission will either be approved or denied. 
+Anyone can contribute. Just clone the repository, create a feature branch and submit a pull request. Upon review, your submission will either be approved or denied. 
   
 
   ## License 
