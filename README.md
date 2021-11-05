@@ -26,7 +26,7 @@ Who doesn't love fun? Who doesn't love pizza? Here at PepWeb, we believe in the 
   * [Deployment](#deployment)
   * [Contribution](#contribution)
   * [License](#license)
-  * [Collaborators](#collaborators)
+  * [Collaborators Tasks and Roles](#collaborators Tasks and Roles)
   
   ## Deployment
   
@@ -46,8 +46,8 @@ Anyone can contribute. Just clone the repository, create a feature branch and su
   
   MIT License 
   
-  ## Collaborators 
-T
+  ## Collaborators Tasks and Roles
+
 <br/>
 Steve Bendricks: Models, Handlebars.
 <br/>
