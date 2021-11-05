@@ -29,11 +29,24 @@ router.get("/:id", (req, res) => {
       },
     ],
   })
-    .then((dbPostData) => res.json(dbPostData))
+    .then((dbTagData) => res.json(dbTagData))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
+});
+
+router.delete('/:id', (req,res) => {
+  Tag.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(dbTagData => res.json(dbTagData))
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 module.exports = router;

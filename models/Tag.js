@@ -43,4 +43,4 @@ const tagData = [
 
 const seedTags = () => Tag.bulkCreate(tagData);
 
-seedTags();
+// seedTags();
