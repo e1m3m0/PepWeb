@@ -51,11 +51,11 @@ Anyone can contribute. Just clone the repository, create a feature branch and su
 <br/>
 Steve Bendricks: Models, Handlebars.
 <br/>
-Guillermo: Routes.
+Guillermo Mateo: Routes.
 <br/>
-Antonio: Passport.
+Antonio Madureira: Passport.
 <br/>
-Jessica: Multer-s3
+Jessica Daley: Multer-s3
  
 
   
