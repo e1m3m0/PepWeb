@@ -14,10 +14,10 @@ PepWeb is a pizza dedicated forum where users can share and connect over their l
 Who doesn't love fun? Who doesn't love pizza? Here at PepWeb, we believe in the indulgence of good fun and good pizza! Share photos, experiences, recipes, recommendations, plus comment and react to other PepWeb user posts. 
 
 
-![pepweb](https://user-images.githubusercontent.com/79805880/140584256-c34ccead-7fa4-4d1b-99a5-e2c5312019b0.jpeg)
 
 
-  
+  ![pepwebSS](https://user-images.githubusercontent.com/79805880/140587235-6da371aa-4d97-4a07-9297-b2ec587ee2e9.png)
+
   
   
   
