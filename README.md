@@ -30,7 +30,7 @@ Who doesn't love fun? Who doesn't love pizza? Here at PepWeb, we believe in the 
   
   ## Deployment
   
- Share a slice on the PepWeb App! <a> href="https://glacial-plains-14244.herokuapp.com/"</a>
+ Share a slice on the PepWeb App! <a href="https://glacial-plains-14244.herokuapp.com">PepWeb.com</a>
   
  ![pizzainsta](https://user-images.githubusercontent.com/79805880/140587185-6bbcbab0-19e9-4eb4-a080-d1188e6a3449.jpg)
 
