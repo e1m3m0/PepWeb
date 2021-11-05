@@ -48,9 +48,13 @@ Anyone can contribute. Just clone the repository, create a feature branch and su
   
   ## Collaborators
 Tasks and roles: 
+<br/>
 Steve Bendricks: Models, Handlebars.
+<br/>
 Guillermo: Routes.
+<br/>
 Antonio: Passport.
+<br/>
 Jessica: Multer-s3
  
 
