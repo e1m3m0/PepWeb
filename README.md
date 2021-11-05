@@ -46,8 +46,8 @@ Anyone can contribute. Just clone the repository, create a feature branch and su
   
   MIT License 
   
-  ## Collaborators
-Tasks and roles: 
+  ## Collaborators 
+T
 <br/>
 Steve Bendricks: Models, Handlebars.
 <br/>
