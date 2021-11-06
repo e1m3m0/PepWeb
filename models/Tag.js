@@ -27,3 +27,20 @@ Tag.init(
 )
 
 module.exports = Tag;
+
+
+const tagData = [
+  {
+    name: 'Made from scratch'
+  },
+  {
+    name: 'Must visit Pizza place'
+  },
+  {
+    name: 'For the love of Pizza'
+  }
+];
+
+const seedTags = () => Tag.bulkCreate(tagData);
+
+// seedTags();

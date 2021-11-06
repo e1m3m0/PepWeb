@@ -160,5 +160,15 @@ router.get('/login', (req, res) => {
   
   res.render('login-signup');
 });
+
+router.get('/testphotos/', (req, res) => {
+  if (req.session.loggedIn) {
+  res.render('testphotos');
+  return;
+  }
+
+  res.render('login-signup');
+});
+
       
 module.exports = router;
