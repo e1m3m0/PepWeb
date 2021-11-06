@@ -4,28 +4,24 @@ async function addPost(event) {
   const title = document.querySelector("#title").value.trim();
   const tag_id = document.querySelector("#type").value.trim();
   const post_text = document.querySelector("#text").value.trim();
-  const photo_file = document.querySelector("#photo").value.trim();
+  // const photo_file = document.querySelector("#photo").value.trim();
   // const post_photo = "";
 
-  console.log(photo_file);
+  // console.log(photo_file);
 
+  // const photo = await fetch("/api/photos/upload", {
+  //   method: "POST",
+  //   body: JSON.stringify({
+  //     photo_file,
+  //   }),
+  //   headers: {
+  //     "Content-Type": "file/json",
+  //   },
+  // }).then((photoData) => {
+  //   res.json(photoData);
+  // });
 
-  if (photo_file){
-    const photo = await fetch("/api/photos/upload", {
-      method: "POST",
-      body: JSON.stringify({
-        photo_file
-      }),
-      headers: {
-        "Content-Type": "file/json",
-      },   
-    })
-    .then(photoData => {
-      res.json(photoData)
-    })
-  };
-  
-  console.log(photoData)
+  // console.log(photoData);
 
   // if (!title || !tag_id || !post_text) {
   //   alert("Please complete all required fields");
