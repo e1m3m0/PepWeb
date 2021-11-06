@@ -3,7 +3,7 @@ module.exports = {
     return `${new Date(date).getMonth() +1}/${new Date(date).getDate()}/${new Date(date).getFullYear()}`;
   },
   reactionCount: (reactionArray, reactionNum) => {
-    const reactionObj = reactionArray.filter(reaction => reaction.reaction_id === parseInt(reactionNum));
+    const reactionObj = reactionArray.filter(reaction => reaction.reaction_id === reactionNum);
     if (reactionObj.length === 0) {
       return 0;
     } else {
