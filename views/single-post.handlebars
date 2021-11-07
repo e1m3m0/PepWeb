@@ -12,9 +12,9 @@
             <p class="mr-2">By: <span class="username">{{post.user.username}}</span></p>
             <a class="mr-2">{{post.comment_count}} Comments</a>
             <form class="reaction">
-              <button id="1" class="mr-2 is-link is-hovered emoji reaction drool">🤤{{#if reactions.[0]}}{{reactions.[0].reactionCount}}{{else}}0{{/if}}</button>
-              <button id="2" class="mr-2 is-link is-hovered emoji reaction meh">😒{{#if reactions.[1]}}{{reactions.[1].reactionCount}}{{else}}0{{/if}}</button>
-              <button id="3" class="mr-2 is-link is-hovered emoji reaction vomit">🤢{{#if reactions.[2]}}{{reactions.[2].reactionCount}}{{else}}0{{/if}}</button>
+              <button id="1" class="button reaction drool">🤤{{reactionCount reactions 1}}</button>
+              <button id="2" class="button reaction meh">😒{{reactionCount reactions 2}}</button>
+              <button id="3" class="button reaction vomit">🤢{{reactionCount reactions 3}}</button>
             </form>
           </div>
         </div>
@@ -32,15 +32,17 @@
       <p class="column">{{post.post_text}}</p>
     </div>
   </div>
+  {{#if loggedIn}}
   <form class="comment-form">
-  <div>
-    <textarea class= "textarea is-small mt-auto" name="comment_text" placeholder="Write your comment here!"></textarea>
-  </div>
+    <div>
+      <textarea class= "textarea is-small mt-auto" name="comment_text" placeholder="Write your comment here!"></textarea>
+    </div>
 
-  <div>
-    <button type="submit">add comment</button>
-  </div>
-</form>
+    <div>
+      <button type="submit">add comment</button>
+    </div>
+  </form>
+  {{/if}}
     
   
 </article>
@@ -52,6 +54,8 @@
 </div>
 {{/each}}
 
+{{#if loggedIn}}
 <script src="/javascript/addComment.js"></script>
 <script src="/javascript/addReaction.js"></script>
+{{/if}}
 

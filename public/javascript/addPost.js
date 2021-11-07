@@ -5,10 +5,23 @@ async function addPost(event) {
   const tag_id = document.querySelector("#type").value.trim();
   const post_text = document.querySelector("#text").value.trim();
   // const photo_file = document.querySelector("#photo").value.trim();
+  // const post_photo = "";
 
   // console.log(photo_file);
 
-  // photo upload to multer-s3 fuction, return file key to use in table
+  // const photo = await fetch("/api/photos/upload", {
+  //   method: "POST",
+  //   body: JSON.stringify({
+  //     photo_file,
+  //   }),
+  //   headers: {
+  //     "Content-Type": "file/json",
+  //   },
+  // }).then((photoData) => {
+  //   res.json(photoData);
+  // });
+
+  // console.log(photoData);
 
   if (!title || !tag_id || !post_text) {
     alert("Please complete all required fields");
