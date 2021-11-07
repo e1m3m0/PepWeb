@@ -23,28 +23,28 @@ async function addPost(event) {
 
   // console.log(photoData);
 
-  // if (!title || !tag_id || !post_text) {
-  //   alert("Please complete all required fields");
-  // } else {
-  //   const response = await fetch("/api/posts", {
-  //     method: "POST",
-  //     body: JSON.stringify({
-  //       title,
-  //       tag_id,
-  //       post_text,
-  //       post_photo,
-  //     }),
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
+  if (!title || !tag_id || !post_text) {
+    alert("Please complete all required fields");
+  } else {
+    const response = await fetch("/api/posts", {
+      method: "POST",
+      body: JSON.stringify({
+        title,
+        tag_id,
+        post_text,
+        // post_photo,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-  //   if (response.ok) {
-  //     document.location.reload();
-  //   } else {
-  //     alert(response.statusText);
-  //   }
-  // }
+    if (response.ok) {
+      document.location.reload();
+    } else {
+      alert(response.statusText);
+    }
+  }
 }
 
 document.querySelector(".post-submit").addEventListener("submit", addPost);
