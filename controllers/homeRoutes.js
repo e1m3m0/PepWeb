@@ -115,7 +115,6 @@ router.get('/post/:id', (req, res) => {
     
     const post = dbPostData.get({ plain: true });
     post.currentUser = req.session.user_id;
-    console.log(post);
 
     Reaction.findAll({
       where: {
@@ -130,8 +129,6 @@ router.get('/post/:id', (req, res) => {
     })
     .then(dbReactionData => {
       const reactions = dbReactionData.map(reaction => reaction.get({ plain: true }));
-
-      console.log(reactions);
 
       res.render('single-post', {
         post: post,
@@ -200,7 +197,6 @@ router.get('/update/:id', (req, res) => {
     }
 
     const post = dbPostData.get({ plain: true });
-    console.log(post);
 
     res.render('update-post', {
       post: post,
