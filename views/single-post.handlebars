@@ -20,6 +20,9 @@
         </div>
       </div>
     </div>
+    {{#if (posterCheck post.currentUser post.user.id)}}
+    <a href="/update/{{post.id}}" class="button is-dark">Update Post</a>
+    {{/if}}
   </div>
 
   <div class="message-body">
@@ -32,6 +35,7 @@
       <p class="column">{{post.post_text}}</p>
     </div>
   </div>
+
   {{#if loggedIn}}
   <form class="comment-form">
     <div>

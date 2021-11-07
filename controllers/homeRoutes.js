@@ -47,7 +47,7 @@ router.get("/", (req, res) => {
     ],
   })
   .then(dbPOstData => {
-    var posts = dbPOstData.map(post => post.get({ plain: true }));
+    const posts = dbPOstData.map(post => post.get({ plain: true }));
     posts.forEach(obj => obj.currentUser = req.session.user_id);
 
     res.render('homepage', {
@@ -114,6 +114,8 @@ router.get('/post/:id', (req, res) => {
     }
     
     const post = dbPostData.get({ plain: true });
+    post.currentUser = req.session.user_id;
+    console.log(post);
 
     Reaction.findAll({
       where: {
