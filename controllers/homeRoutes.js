@@ -47,7 +47,8 @@ router.get("/", (req, res) => {
     ],
   })
   .then(dbPOstData => {
-    const posts = dbPOstData.map(post => post.get({ plain: true }));
+    var posts = dbPOstData.map(post => post.get({ plain: true }));
+    posts.forEach(obj => obj.currentUser = req.session.user_id);
 
     res.render('homepage', {
       posts, 
@@ -143,9 +144,76 @@ router.get('/post/:id', (req, res) => {
   });
 });
 
+
+router.get('/update/:id', (req, res) => {
+  Post.findOne({
+    where: {
+      id: req.params.id,
+    },
+    attributes: [
+      "id",
+      "title",
+      "post_text",
+      "created_at",
+      [
+        sequelize.literal(
+          "(SELECT COUNT(*) FROM reaction WHERE post.id = reaction.post_id)"
+        ),
+         "reaction_count",
+      ],
+      [
+        sequelize.literal(
+          "(SELECT COUNT(*) FROM comment WHERE post.id = comment.post_id)"
+        ),
+        "comment_count",
+      ],
+    ],
+    include: [
+      {
+        model: Reaction,
+        attributes: ["reaction_id", "user_id"],
+      },
+      {
+        model: Tag,
+        attributes: ["id", "name"],
+      },
+      {
+        model: Comment,
+        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        include: {
+          model: User,
+          attributes: ["username", "id"],
+        },
+      },
+      {
+        model: User,
+        attributes: ["username", "id"],
+      },
+    ],
+  })
+  .then(dbPostData => {
+    if (!dbPostData) {
+      res.status(404).json({ message: 'No post found with this id' });
+      return;
+    }
+
+    const post = dbPostData.get({ plain: true });
+    console.log(post);
+
+    res.render('update-post', {
+      post: post,
+      loggedIn: req.session.loggedIn
+    });
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+});
+
 router.get('/add-post/', (req, res) => {
   if (req.session.loggedIn) {
-  res.render('add-post');
+  res.render('add-post', { loggedIn: req.session.loggedIn });
   return;
   }
 

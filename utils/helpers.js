@@ -9,5 +9,12 @@ module.exports = {
     } else {
       return reactionObj[0].reactionCount;
     }
+  },
+  posterCheck: (loggedInUser, originalPosterID) => {
+    if (loggedInUser === originalPosterID) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
