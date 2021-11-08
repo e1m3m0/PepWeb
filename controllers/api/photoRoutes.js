@@ -1,4 +1,4 @@
-
+require('dotenv').config()
 const { Post } = require("../../models");
 const router = require('express').Router();
 const aws = require('aws-sdk');
@@ -25,6 +25,7 @@ const fileFilter = (req, file, cb) => {
   }
 }
 
+router.use(bodyParser.json());
 
 
 const upload = multer({
