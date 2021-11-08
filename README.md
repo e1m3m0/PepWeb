@@ -16,10 +16,9 @@ Who doesn't love fun? Who doesn't love pizza? Here at PepWeb, we believe in the 
 
 
 
-  ![pepwebSS](https://user-images.githubusercontent.com/79805880/140587235-6da371aa-4d97-4a07-9297-b2ec587ee2e9.png)
+  
+  ![pepSS](https://user-images.githubusercontent.com/79805880/140741620-cad882e3-4c21-45f9-a163-836a1fe541bf.png)
 
-  
-  
   
  
   ## Table of Contents
