@@ -8,58 +8,95 @@
             <p class="ml-2 has-text-weight-normal"> - {{post.tag.name}}</p>
           </div>
           <div class="has-text-weight-normal level-left">
-            {{!-- change span to <a></a> with href if user-profile route is made and set up --}}
-            <p class="mr-2">By: <span class="username">{{post.user.username}}</span></p>
+            {{! change span to <a></a> with href if user-profile route is made and set up }}
+            <p id="{{post.user.id}}" class="mr-2 user-data">By:
+              <span class="username">{{post.user.username}}</span></p>
             <a class="mr-2">{{post.comment_count}} Comments</a>
             <form class="reaction">
-              <button id="1" class="button reaction drool">🤤{{reactionCount reactions 1}}</button>
-              <button id="2" class="button reaction meh">😒{{reactionCount reactions 2}}</button>
-              <button id="3" class="button reaction vomit">🤢{{reactionCount reactions 3}}</button>
+              <button id="1" class="button reaction drool">🤤{{reactionCount
+                  reactions
+                  1
+                }}</button>
+              <button id="2" class="button reaction meh">😒{{reactionCount
+                  reactions
+                  2
+                }}</button>
+              <button id="3" class="button reaction vomit">🤢{{reactionCount
+                  reactions
+                  3
+                }}</button>
             </form>
           </div>
         </div>
       </div>
     </div>
     {{#if (posterCheck post.currentUser post.user.id)}}
-    <a href="/update/{{post.id}}" class="button is-dark">Update Post</a>
+      <a href="/update/{{post.id}}" class="button is-dark">Update Post</a>
     {{/if}}
+          {{#if post.post_photo}}
+        <figure class="image image-center">
+          <img
+            src="{{post.post_photo}}"
+          />
+        </figure>
+      {{else}}
+      {{#if (posterCheck post.currentUser post.user.id)}}
+        {{! file upload section starts }}
+        <div class="file control">
+          <label class="file-label">
+            <input class="file-input" type="file" id="photo" />
+            <span class="file-cta">
+              <span class="file-icon">
+                <i class="fas fa-upload"></i>
+              </span>
+              <span class="file-label">
+                Upload a photo
+              </span>
+            </span>
+          </label>
+        </div>
+        {{! file upload section ends }}
+        {{/if}}
+      {{/if}}
   </div>
 
   <div class="message-body">
     <div class="columns">
       {{!-- {{#if post.photo_photo}} --}}
-      {{!-- <figure class="image image-center">
+      {{! <figure class="image image-center">
         <img src="https://www.budgetbytes.com/wp-content/uploads/2010/07/Classic-Homemade-Pizza-Dough-close.jpg">
-      </figure> --}}
-       {{!-- {{/if}} --}}
+      </figure> }}
+      {{!-- {{/if}} --}}
       <p class="column">{{post.post_text}}</p>
     </div>
   </div>
 
   {{#if loggedIn}}
-  <form class="comment-form">
-    <div>
-      <textarea class= "textarea is-small mt-auto" name="comment_text" placeholder="Write your comment here!"></textarea>
-    </div>
+    <form class="comment-form">
+      <div>
+        <textarea
+          class="textarea is-small mt-auto"
+          name="comment_text"
+          placeholder="Write your comment here!"
+        ></textarea>
+      </div>
 
-    <div>
-      <button type="submit">add comment</button>
-    </div>
-  </form>
+      <div>
+        <button type="submit">add comment</button>
+      </div>
+    </form>
   {{/if}}
-    
-  
+
 </article>
 
 {{#each post.comments}}
-<div class="box mx-5 comment_box">
-  <p>{{user.username}} on {{format_date created_at}}: </p>
-  <p>{{comment_text}}</p>
-</div>
+  <div class="box mx-5 comment_box">
+    <p>{{user.username}} on {{format_date created_at}}: </p>
+    <p>{{comment_text}}</p>
+  </div>
 {{/each}}
 
 {{#if loggedIn}}
-<script src="/javascript/addComment.js"></script>
-<script src="/javascript/addReaction.js"></script>
+  <script src="/javascript/addComment.js"></script>
+  <script src="/javascript/addReaction.js"></script>
 {{/if}}
-

@@ -10,6 +10,7 @@ router.get("/", (req, res) => {
       "title",
       "post_text",
       "created_at",
+      "post_photo",
       [
         sequelize.literal(
           "(SELECT COUNT(*) FROM reaction WHERE post.id = reaction.post_id)"
@@ -71,6 +72,7 @@ router.get('/post/:id', (req, res) => {
       "title",
       "post_text",
       "created_at",
+      "post_photo",
       [
         sequelize.literal(
           "(SELECT COUNT(*) FROM reaction WHERE post.id = reaction.post_id)"

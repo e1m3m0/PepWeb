@@ -1,16 +1,9 @@
-const element = document.querySelector('.photo-submit');
-element.addEventListener('submit', event => {
-  event.preventDefault();
-  // actual logic, e.g. validate the form
-  console.log('Form submission cancelled.');
-});
-
-
-
 async function addPhoto(event) {
   event.preventDefault();
 
   const input = document.querySelector("input[type='file']");
+  const user_id = document.querySelector(".user-data").getAttribute("id").trim();
+  const post_id = window.location.toString().split("/")[window.location.toString().split("/").length - 1];
 
   const formData = new FormData();
   formData.append('file', input.files[0])
@@ -33,11 +26,8 @@ async function addPhoto(event) {
   })
 
   if (response.ok) {
-    console.log(response);
-    const fileName = document.querySelector('#file-js-example .file-name'); 
-    fileName.textContent = "Photo Uploaded!"
-    const post_photo = document.querySelector('.photo');
-    post_photo.setAttribute('id') = response.lastModified;
+    console.log(response.json);
+
   } else {
     alert(response.statusText);
   }
