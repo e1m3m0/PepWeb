@@ -33,31 +33,33 @@
     {{#if (posterCheck post.currentUser post.user.id)}}
       <a href="/update/{{post.id}}" class="button is-dark">Update Post</a>
     {{/if}}
-          {{#if post.post_photo}}
-        <figure class="image image-center">
-          <img
-            src="{{post.post_photo}}"
-          />
-        </figure>
-      {{else}}
+    {{#if post.post_photo}}
+      <figure class="image image-center">
+        <img src="{{post.post_photo}}" />
+      </figure>
+    {{else}}
       {{#if (posterCheck post.currentUser post.user.id)}}
         {{! file upload section starts }}
-        <div class="file control">
-          <label class="file-label">
-            <input class="file-input" type="file" id="photo" />
-            <span class="file-cta">
-              <span class="file-icon">
-                <i class="fas fa-upload"></i>
+        <form id="photo-submit" class="photo-submit" method="post" enctype="multipart/form-data" action="/api/photos" >
+          <div class="file">
+            <label class="file-label">
+              <input class="file-input" type="file" name="upl" />
+              <span class="file-cta">
+                <span class="file-icon">
+                  <i class="fas fa-upload"></i>
+                </span>
+                <span class="file-label">
+                  Choose a file…
+                </span>
               </span>
-              <span class="file-label">
-                Upload a photo
-              </span>
-            </span>
-          </label>
-        </div>
+            </label>
+          </div>
+          <input type="submit" />
+        </form>
         {{! file upload section ends }}
-        {{/if}}
+
       {{/if}}
+    {{/if}}
   </div>
 
   <div class="message-body">
@@ -100,3 +102,9 @@
   <script src="/javascript/addComment.js"></script>
   <script src="/javascript/addReaction.js"></script>
 {{/if}}
+
+{{#unless post.post_photo}}
+  {{#if (posterCheck post.currentUser post.user.id)}}
+    <script src="/javascript/addPhoto.js"></script>
+  {{/if}}
+{{/unless}}
