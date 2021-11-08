@@ -64,7 +64,7 @@ initializePassport (
     id => users.find(user => user.id === id)
 )
 
-const base = require("./db/schema.sql")
+const base = require("./db")
 
 //app.set("view-engine", "ejs" )
 app.use(flash())
