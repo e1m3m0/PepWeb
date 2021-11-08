@@ -18,6 +18,9 @@
         </div>
       </div>
     </div>
+    {{#if (posterCheck currentUser user.id)}}
+    <a href="/update/{{id}}" class="button is-dark">Update Post</a>
+    {{/if}}
   </div>
 </article>
 {{/each}}

@@ -1,14 +1,21 @@
-const router = require('express').Router() 
+
+const { Post } = require("../../models");
+const router = require('express').Router();
 const aws = require('aws-sdk');
-const s3 = new aws.S3();
+const bodyParser = require('body-parser');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
+
+
 
 aws.config.update({
   accessKeyId: process.env.AWS_ACCESS_KEY,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
   region: process.env.AWS_BUCKET_REGION
 });
+
+
+const s3 = new aws.S3();
 
 const fileFilter = (req, file, cb) => {
   if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
@@ -17,6 +24,8 @@ const fileFilter = (req, file, cb) => {
     cb(new Error('Invalid file type, only JPEG and PNG is allowed!'), false);
   }
 }
+
+
 
 const upload = multer({
   fileFilter,
@@ -30,16 +39,29 @@ const upload = multer({
   })
 });
 
-router.post('/upload', upload.array('upl', 1), function(req, res, next) {
-  const photo = req.files[0].key;
 
-  console.log(photo);
+router.post('/upload/:id', upload.array('upl'), function (req, res, next) {
+  const post_photo = req.files[0].key;
+  const id = req.params.id
+  
+  Post.update({post_photo: post_photo}, {
+    where: {
+      id: id
+    },
+  })
+  .then((dbPostData) => {
+    if (!dbPostData) {
+      res.status(404).json({ message: "No post found with this id" });
+      return;
+    }
+    res.redirect(`/post/${id}`);
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 
-  res.send(photo)
-})
 
-
-
-
+});
 
 module.exports = router;

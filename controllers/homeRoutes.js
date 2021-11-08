@@ -10,6 +10,7 @@ router.get("/", (req, res) => {
       "title",
       "post_text",
       "created_at",
+      "post_photo",
       [
         sequelize.literal(
           "(SELECT COUNT(*) FROM reaction WHERE post.id = reaction.post_id)"
@@ -48,6 +49,7 @@ router.get("/", (req, res) => {
   })
   .then(dbPOstData => {
     const posts = dbPOstData.map(post => post.get({ plain: true }));
+    posts.forEach(obj => obj.currentUser = req.session.user_id);
 
     res.render('homepage', {
       posts, 
@@ -61,6 +63,90 @@ router.get("/", (req, res) => {
 });
 
 router.get('/post/:id', (req, res) => {
+  Post.findOne({
+    where: {
+      id: req.params.id,
+    },
+    attributes: [
+      "id",
+      "title",
+      "post_text",
+      "created_at",
+      "post_photo",
+      [
+        sequelize.literal(
+          "(SELECT COUNT(*) FROM reaction WHERE post.id = reaction.post_id)"
+        ),
+         "reaction_count",
+      ],
+      [
+        sequelize.literal(
+          "(SELECT COUNT(*) FROM comment WHERE post.id = comment.post_id)"
+        ),
+        "comment_count",
+      ],
+    ],
+    include: [
+      {
+        model: Reaction,
+        attributes: ["reaction_id", "user_id"],
+      },
+      {
+        model: Tag,
+        attributes: ["id", "name"],
+      },
+      {
+        model: Comment,
+        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        include: {
+          model: User,
+          attributes: ["username", "id"],
+        },
+      },
+      {
+        model: User,
+        attributes: ["username", "id"],
+      },
+    ],
+  })
+  .then(dbPostData => {
+    if (!dbPostData) {
+      res.status(404).json({ message: 'No post found with this id' });
+      return;
+    }
+    
+    const post = dbPostData.get({ plain: true });
+    post.currentUser = req.session.user_id;
+
+    Reaction.findAll({
+      where: {
+        post_id: req.params.id
+      },
+      attributes: {
+        include: [[sequelize.fn('COUNT', sequelize.col('post_id')), 'reactionCount']],
+        exclude: [ 'id', 'user_id', 'post_id']
+      },
+      group: ['reaction_id'],
+      order: [['reaction_id']],
+    })
+    .then(dbReactionData => {
+      const reactions = dbReactionData.map(reaction => reaction.get({ plain: true }));
+
+      res.render('single-post', {
+        post: post,
+        reactions: reactions,
+        loggedIn: req.session.loggedIn
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+  });
+});
+
+
+router.get('/update/:id', (req, res) => {
   Post.findOne({
     where: {
       id: req.params.id,
@@ -111,41 +197,23 @@ router.get('/post/:id', (req, res) => {
       res.status(404).json({ message: 'No post found with this id' });
       return;
     }
-    
+
     const post = dbPostData.get({ plain: true });
 
-    Reaction.findAll({
-      where: {
-        post_id: req.params.id
-      },
-      attributes: {
-        include: [[sequelize.fn('COUNT', sequelize.col('post_id')), 'reactionCount']],
-        exclude: [ 'id', 'user_id', 'post_id']
-      },
-      group: ['reaction_id'],
-      order: [['reaction_id']],
-    })
-    .then(dbReactionData => {
-      const reactions = dbReactionData.map(reaction => reaction.get({ plain: true }));
-
-      console.log(reactions);
-
-      res.render('single-post', {
-        post: post,
-        reactions: reactions,
-        loggedIn: req.session.loggedIn
-      });
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
+    res.render('update-post', {
+      post: post,
+      loggedIn: req.session.loggedIn
     });
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
   });
 });
 
 router.get('/add-post/', (req, res) => {
   if (req.session.loggedIn) {
-  res.render('add-post');
+  res.render('add-post', { loggedIn: req.session.loggedIn });
   return;
   }
 
@@ -161,14 +229,6 @@ router.get('/login', (req, res) => {
   res.render('login-signup');
 });
 
-router.get('/testphotos/', (req, res) => {
-  if (req.session.loggedIn) {
-  res.render('testphotos');
-  return;
-  }
-
-  res.render('login-signup');
-});
 
       
 module.exports = router;
