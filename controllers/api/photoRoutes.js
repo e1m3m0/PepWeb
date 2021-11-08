@@ -60,8 +60,8 @@ router.post('/upload/:id', upload.array('upl'), function (req, res, next) {
     console.log(err);
     res.status(500).json(err);
   });
-
-
 });
+
+var bucket = new aws.S3({ params: { Bucket: 'pepweb' } });
 
 module.exports = router;
