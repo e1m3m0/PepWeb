@@ -64,7 +64,7 @@ initializePassport (
     id => users.find(user => user.id === id)
 )
 
-const base = ("./db/schema.sql")
+const base = require("./db/schema.sql")
 
 //app.set("view-engine", "ejs" )
 app.use(flash())
@@ -118,7 +118,7 @@ app.delete("/logout", (req, res) => {
     res.redirect("/login")
 })
 
-function checkAuthenticated(req, res, next) {
+function checkNotAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next()
     }
