@@ -40,7 +40,7 @@
     {{else}}
       {{#if (posterCheck post.currentUser post.user.id)}}
         {{! file upload section starts }}
-        <form id="photo-submit" class="photo-submit" method="post" enctype="multipart/form-data" action="/api/photos" >
+        <form method="post" enctype="multipart/form-data" action="/api/photos/upload" >
           <div class="file">
             <label class="file-label">
               <input class="file-input" type="file" name="upl" />
@@ -52,9 +52,9 @@
                   Choose a file…
                 </span>
               </span>
-            </label>
-          </div>
-          <input type="submit" />
+            </label
+            ><input type="submit" />
+          </div>          
         </form>
         {{! file upload section ends }}
 

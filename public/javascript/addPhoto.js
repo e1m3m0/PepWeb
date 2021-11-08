@@ -34,4 +34,4 @@ function addPhoto(event) {
   // }
 }
 
-document.querySelector('.photo-submit').addEventListener('submit', addPhoto);
+// document.querySelector('.photo-submit').addEventListener('submit', addPhoto);
