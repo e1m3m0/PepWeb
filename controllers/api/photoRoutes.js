@@ -34,7 +34,6 @@ const upload = multer({
     s3: s3,
     bucket: process.env.AWS_BUCKET_NAME||'pepweb',
     key: function (req, file, cb) {
-      console.log(file);
       cb(null, Date.now().toString()); //use Date.now() for unique file keys
     }
   })
@@ -62,7 +61,5 @@ router.post('/upload/:id', upload.array('upl'), function (req, res, next) {
     res.status(500).json(err);
   });
 });
-
-var bucket = new aws.S3({ params: { Bucket: 'pepweb' } });
 
 module.exports = router;

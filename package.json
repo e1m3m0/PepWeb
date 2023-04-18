@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JessicaLDaley/PepWeb.git"
+    "url": "git+https://github.com/e1m3m0/PepWeb.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JessicaLDaley/PepWeb/issues"
+    "url": "https://github.com/e1m3m0/PepWeb/issues"
   },
-  "homepage": "https://github.com/JessicaLDaley/PepWeb#readme",
+  "homepage": "https://github.com/e1m3m0/PepWeb#readme",
   "dependencies": {
     "aws-sdk": "^2.1023.0",
     "bcrypt": "^5.0.1",
