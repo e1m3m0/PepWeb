@@ -12,6 +12,3 @@ const sequelize = process.env.CLEARDB_JADE_URL
     });
 
 module.exports = sequelize;
-
-
-// mysql://b532abba556d55:c581a433@us-cdbr-east-06.cleardb.net/heroku_86d1a935ed779fc?reconnect=true
